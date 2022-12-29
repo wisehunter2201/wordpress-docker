@@ -1,0 +1,30 @@
+{
+    "name": "wisehunter/wordpress-docker",
+    "autoload": {
+        "psr-4": {
+            "Wisehunter\\WordpressDocker\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WiseHunter",
+            "email": "wisehunter2201@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^2.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "squizlabs/php_codesniffer": "*",
+        "phpcompatibility/php-compatibility": "*"
+    },
+    "prefer-stable" : true,
+    "scripts": {
+        "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
+        "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

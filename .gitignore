@@ -1,3 +1,6 @@
 .idea
 www/*
 !www/cert
+vendor/
+
+.phpcs.cache
