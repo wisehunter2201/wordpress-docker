@@ -16,13 +16,18 @@
 	<arg name="cache" value=".phpcs.cache"/>
 
 	<rule ref="WordPress">
-		<!-- PSR4 -->
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+		<exclude name="WordPress.PHP.StrictInArray.MissingTrueStrict"/>
+		<exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
+		<exclude name="WordPress.NamingConventions.ValidVariableName.InterpolatedVariableNotSnakeCase"/>
+		<exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions.NoSpacesAroundArrayKeys"/>
 	</rule>
-
-	<rule ref="PHPCompatibility"/>
-
+	<rule ref="PHPCompatibility">
+		<exclude name="PHPCompatibility.FunctionDeclarations.NewReturnTypeDeclarations"/>
+		<exclude name="PHPCompatibility.FunctionDeclarations.NewParamTypeDeclarations"/>
+		<exclude name="PHPCompatibility.Operators.NewOperators.t_coalesceFound"/>
+	</rule>
 	<rule ref="Generic.Metrics.CyclomaticComplexity">
 		<properties>
 			<property name="complexity" value="3"/>
@@ -30,12 +35,95 @@
 		</properties>
 	</rule>
 
-	<rule ref="Generic.Metrics.NestingLevel">
+
+	<exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>\
+	<rule ref="PEAR">
+		<exclude name="PEAR.ControlStructures.MultiLineCondition"/>
+		<exclude name="PEAR.Classes.ClassDeclaration.OpenBraceNewLine"/>
+		<exclude name="PEAR.ControlStructures.MultiLineCondition.SpacingAfterOpenBrace"/>
+		<exclude name="PEAR.Commenting.FunctionComment.Missing"/>
+		<exclude name="PEAR.Commenting.ClassComment"/>
+		<exclude name="PEAR.Commenting.FileComment.Missing"/>
+		<exclude name="PEAR.Functions.FunctionDeclaration.BraceOnSameLine"/>
+		<exclude name="PEAR.NamingConventions.ValidFunctionName.ScopeNotCamelCaps"/>
+	</rule>
+
+	<rule ref="Squiz.WhiteSpace.FunctionSpacing">
 		<properties>
-			<property name="absoluteNestingLevel" value="3"/>
+			<property name="spacing" value="1"/>
+			<property name="spacingBeforeFirst" value="0"/>
+			<property name="spacingAfterLast" value="0"/>
+		</properties>
+	</rule>
+	<rule ref="Squiz.Arrays.ArrayBracketSpacing">
+		<properties>
+			<property name="spacing" value="1"/>
+			<property name="spacingBeforeFirst" value="0"/>
+			<property name="spacingAfterLast" value="0"/>
+		</properties>
+	</rule>
+	<rule ref="PSR1">
+		<exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps"/>
+	</rule>
+	<rule ref="Squiz">
+		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"/>
+		<exclude name="Squiz.Files.FileExtension.ClassFound"/>
+		<exclude name="Squiz.Operators.ComparisonOperatorUsage.ImplicitTrue"/>
+		<exclude name="Squiz.WhiteSpace.FunctionClosingBraceSpace"/>
+		<exclude name="Squiz.Classes.ClassDeclaration.OpenBraceNewLine"/>
+		<exclude name="Squiz.Classes.ClassDeclaration.SpaceBeforeKeyword"/>
+		<exclude name="Squiz.Commenting.ClassComment"/>
+		<exclude name="Squiz.Commenting.FileComment"/>
+		<exclude name="Squiz.Commenting.FunctionComment"/>
+		<exclude name="Squiz.Commenting.VariableComment"/>
+		<exclude name="Squiz.Arrays.ArrayDeclaration.SingleLineNotAllowed"/>
+		<exclude name="Squiz.NamingConventions.ValidVariableName.NotCamelCaps"/>
+		<exclude name="Squiz.NamingConventions.ValidFunctionName.ScopeNotCamelCaps"/>
+		<exclude name="Squiz.Classes.ClassDeclaration.SpaceBeforeCloseBrace"/>
+		<exclude name="Squiz.PHP.GlobalKeyword.NotAllowed"/>
+		<exclude name="Squiz.Operators.ComparisonOperatorUsage.NotAllowed"/>
+		<exclude name="Squiz.PHP.DisallowInlineIf.Found"/>
+		<exclude name="Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps"/>
+		<exclude name="Squiz.ControlStructures.InlineIfDeclaration.NoBrackets"/>
+		<exclude name="Squiz.NamingConventions.ValidVariableName.StringNotCamelCaps"/>
+		<exclude name="Squiz.PHP.DisallowComparisonAssignment.AssignedComparison"/>
+	</rule>
+	<!--    PSR2  Start-->
+	<rule ref="PSR2">
+		<exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine"/>
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent.TabsUsed"/>
+		<exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
+		<exclude name="Generic.WhiteSpace.ScopeIndent"/>
+		<exclude name="PSR2.Methods.FunctionCallSignature.SpaceAfterOpenBracket"/>
+		<exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
+		<exclude name="PSR2.Methods.MethodDeclaration.Underscore"/>
+	</rule>
+	<rule ref="PSR2.Methods.FunctionCallSignature">
+		<properties>
+			<property name="requiredSpacesBeforeClose" value="1"/>
+		</properties>
+		<properties>
+			<property name="SpaceAfterOpenBracket" value="1"/>
+		</properties>
+	</rule>
+	<rule ref="PSR2.ControlStructures.ControlStructureSpacing">
+		<properties>
+			<property name="requiredSpacesAfterOpen" value="1"/>
+			<property name="requiredSpacesBeforeClose" value="1"/>
 		</properties>
 	</rule>
 
+	<!--    PSR2  End-->
+	<rule ref="Generic.Metrics.NestingLevel">
+		<properties>
+			<property name="absoluteNestingLevel" value="8"/>
+		</properties>
+	</rule>
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="tabIndent" value="true"/>
+		</properties>
+	</rule>
 	<!-- Allow short array syntax -->
 	<rule ref="Generic.Arrays.DisallowShortArraySyntax.Found">
 		<severity>0</severity>
