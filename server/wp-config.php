@@ -25,7 +25,7 @@ define( 'WP_ENV', strpos( $_SERVER['SERVER_NAME'], 'localhost' ) ? 'development'
 /** The name of the database for WordPress */
 switch (WP_ENV) {
 	case 'development':
-		define( 'DB_NAME', 'root' );
+		define( 'DB_NAME', 'wisehunter' );
 		define( 'DB_USER', 'root' );
 		define( 'DB_PASSWORD', 'root' );
 		define( 'DB_HOST', 'db_server' );
