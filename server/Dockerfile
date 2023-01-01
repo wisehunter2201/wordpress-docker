@@ -1,5 +1,6 @@
 FROM php:7.4-apache
 
+# Enabla mod rewrite rules
 RUN a2enmod rewrite
 
 # For ssl certificate
@@ -10,12 +11,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mys
     apt-get install wget \
     unzip
 
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_LOG_DIR /var/log/apache2
-
 EXPOSE 80
-WORKDIR /var/www/html
 
 RUN usermod -u 1000 www-data; \
     chmod 755 /var/www/html

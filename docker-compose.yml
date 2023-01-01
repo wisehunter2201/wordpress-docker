@@ -15,8 +15,11 @@ services:
     working_dir: /var/www/html
     restart: 'always'
     environment:
-      - "SERVER_NAME=${SERVER_NAME}"
-      - "DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASS}@db_server:3306/${MYSQL_DB}?serverVersion=10.5"
+      APACHE_RUN_USER: "www-data"
+      APACHE_RUN_GROUP: "www-data"
+      APACHE_LOG_DIR: "/var/log/apache2"
+      SERVER_NAME: "${SERVER_NAME}"
+      DATABASE_URL: "mysql://${MYSQL_USER}:${MYSQL_PASS}@db_server:3306/${MYSQL_DB}?serverVersion=10.5"
     volumes:
       - ./www:/var/www/html
       - ./server/wp-config.php:/var/www/html/wp-config.php
@@ -42,7 +45,6 @@ services:
       MYSQL_PASSWORD: "${MYSQL_PASS}"
       MYSQL_DATABASE: "${MYSQL_DB}"
     volumes:
-      - db_data:/var/lib/mysql
       - ./server/db/conf/my.cnf:/etc/mysql/conf.d/my.cnf
     networks:
       - wordpress
@@ -56,8 +58,6 @@ services:
       PMA_HOST: db_server
     depends_on:
       - db_server
-    volumes:
-      - db_admin_data:/var/www
     networks:
       - wordpress
 

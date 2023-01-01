@@ -16,7 +16,7 @@ else
 fi
 
 # Check if WordPress installed
-if [ -d ${PATH_TO_THEMES} ]; then
+if wp core is-installed --path="/var/www/html/" --allow-root; then
   echo -e "${GREEN}WordPress is installed${NC}"
 else
   echo -e "${RED}Start install WordPress${NC}"

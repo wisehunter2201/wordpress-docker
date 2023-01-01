@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 echo -e "${RED}Start container${NC}"
 docker compose up -d
 
-echo -e "${RED}Start Installing${NC}"
+echo -e "${RED}Start Installing ${NC}"
 docker compose exec server install-wordpress.sh
 
 # Done
